@@ -75,12 +75,13 @@ const DetallesDash = () => {
   }, [id]);
 
   // Función para obtener la URL de la portada del manga
-  const getCoverUrl = (mangaId, coverArt) => {
+  function getCoverUrl(mangaId, coverArt) {
     if (!mangaId || !coverArt?.attributes?.fileName) {
-      return "https://via.placeholder.com/400"; // Imagen de respaldo
+      return "https://via.placeholder.com/300";
     }
-    return `https://uploads.mangadex.org/covers/${mangaId}/${coverArt.attributes.fileName}`;
-  };
+    // Usamos un proxy de imágenes para evitar problemas de CORS
+    return `https://images.weserv.nl/?url=https://uploads.mangadex.org/covers/${mangaId}/${coverArt.attributes.fileName}&w=300`;
+  }
 
   if (!manga) {
     return <Typography>Cargando...</Typography>;
