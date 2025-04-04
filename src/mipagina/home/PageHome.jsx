@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
+
 const PageHome = () => {
   const [mangas, setMangas] = useState([]); // Estado para almacenar los mangas
   const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
@@ -19,7 +20,7 @@ const PageHome = () => {
   // Función para obtener la información de la portada de un manga
   const fetchCoverArt = async (mangaId) => {
     try {
-      const response = await fetch(`https://api.mangadex.org/cover?manga[]=${mangaId}`);
+      const response = await fetch(`/api/cover?manga[]=${mangaId}`);
       if (!response.ok) {
         throw new Error("Error al obtener la portada del manga");
       }
@@ -35,8 +36,9 @@ const PageHome = () => {
   const searchMangas = async () => {
     try {
       const response = await fetch(
-        `https://api.mangadex.org/manga?title=${searchTerm}&availableTranslatedLanguage[]=es&limit=10`
+        `/api/manga?title=${searchTerm}&availableTranslatedLanguage[]=es&limit=10`
       );
+    
       if (!response.ok) {
         throw new Error("Error al buscar mangas");
       }
@@ -57,8 +59,8 @@ const PageHome = () => {
   const fetchPopularMangas = async () => {
     try {
       const response = await fetch(
-        "https://api.mangadex.org/manga?limit=10&order[rating]=desc&availableTranslatedLanguage[]=es"
-      );
+        "/api/manga?limit=10&order[rating]=desc&availableTranslatedLanguage[]=es"
+      );  
       if (!response.ok) {
         throw new Error("Error al obtener los mangas populares");
       }

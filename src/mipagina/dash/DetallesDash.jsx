@@ -13,6 +13,8 @@ import {
   InputLabel,
 } from "@mui/material";
 
+
+
 const DetallesDash = () => {
   const { id } = useParams(); // Obtén el ID del manga desde la URL
   const [manga, setManga] = useState(null); // Estado para almacenar los detalles del manga
@@ -22,7 +24,7 @@ const DetallesDash = () => {
   // Función para obtener la información de la portada de un manga
   const fetchCoverArt = async (mangaId) => {
     try {
-      const response = await fetch(`https://api.mangadex.org/cover?manga[]=${mangaId}`);
+      const response = await fetch(`/api/cover?manga[]=${mangaId}`);
       if (!response.ok) {
         throw new Error("Error al obtener la portada del manga");
       }
@@ -37,7 +39,7 @@ const DetallesDash = () => {
   // Función para obtener los detalles del manga desde la API de MangaDex
   const fetchMangaDetails = async () => {
     try {
-      const response = await fetch(`https://api.mangadex.org/manga/${id}`);
+      const response = await fetch(`/api/manga/${id}`);
       if (!response.ok) {
         throw new Error("Error al obtener los detalles del manga");
       }
@@ -53,8 +55,9 @@ const DetallesDash = () => {
   const fetchChapters = async () => {
     try {
       const response = await fetch(
-        `https://api.mangadex.org/manga/${id}/feed?order[chapter]=asc&translatedLanguage[]=es`
+        `/api/manga/${id}/feed?order[chapter]=asc&translatedLanguage[]=es`
       );
+  
       if (!response.ok) {
         throw new Error("Error al obtener los capítulos del manga");
       }
