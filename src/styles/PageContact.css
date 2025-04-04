@@ -1,0 +1,32 @@
+.contact-section {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .contact-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-field {
+    margin-bottom: 20px;
+  }
+  
+  .contact-button {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .success-message {
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+  }
